@@ -1,23 +1,17 @@
 package cgg.ecommerce.dao;
 
 import java.util.List;
-
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import cgg.ecommerce.entities.User;
+import cgg.ecommerce.entities.Users;
 import cgg.ecommerce.helpers.Helper;
 
 public class UserDao {
-	 private static final SessionFactory sessionFactory=Helper.getFactory();
-	  
-	 
-	 
+
 	  public int addUser(String userName, String userEmail, String userPassword, String userph, String useraddress,String userType) {
-	        try (Session session = sessionFactory.openSession()) {
+	        try (Session session = Helper.getSession()) {
 	            Transaction tx = session.beginTransaction();
-	            User user = new User(userName, userEmail, userPassword, userph, useraddress, userType);
+	            Users user = new Users(userName, userEmail, userPassword, userph, useraddress, userType);
 	            int id = (int) session.save(user);
 	            tx.commit();
 	            return id;
@@ -27,18 +21,18 @@ public class UserDao {
 	        }
 	    }
 	  
-	  public List<User> getAllUsers() {
-	        try (Session session = sessionFactory.openSession()) {
-	            return session.createQuery("from User", User.class).list();
+	  public List<Users> getAllUsers() {
+	        try (Session session = Helper.getSession()) {
+	            return session.createQuery("from Users", Users.class).list();
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            return null;
 	        }
 	    }
 	  
-	  public User getUser(String email, String password) {
-	        try (Session session = sessionFactory.openSession()) {
-	            return session.createQuery("from User where userEmail = :email and userPassword = :password", User.class)
+	  public Users getUser(String email, String password) {
+	        try (Session session = Helper.getSession()) {
+	            return session.createQuery("from Users where userEmail = :email and userPassword = :password", Users.class)
 	                    .setParameter("email", email)
 	                    .setParameter("password", password)
 	                    .uniqueResult();
@@ -48,9 +42,9 @@ public class UserDao {
 	        }
 	    }
 	  
-	  public User getCurrentUser(String username) {
-	        try (Session session = sessionFactory.openSession()) {
-	            return session.createQuery("from User where userName = :username", User.class)
+	  public Users getCurrentUser(String username) {
+	        try (Session session = Helper.getSession()) {
+	            return session.createQuery("from Users where userName = :username", Users.class)
 	                    .setParameter("username", username)
 	                    .uniqueResult();
 	        } catch (Exception e) {

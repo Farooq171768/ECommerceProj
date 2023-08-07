@@ -1,7 +1,6 @@
 package cgg.ecommerce.servlets;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import cgg.ecommerce.dao.UserDao;
-import cgg.ecommerce.entities.User;
+import cgg.ecommerce.entities.Users;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 	    String password = request.getParameter("userpassword");
 	    
 		UserDao userDao = new UserDao();
-		User u=userDao.getUser(email, password);
+		Users u=userDao.getUser(email, password);
 		
 		if(u==null) {
 			HttpSession session = request.getSession();
@@ -38,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		else {
 			HttpSession  session=request.getSession();
-		    session.setAttribute("current_user","Youre logged in");
+		    session.setAttribute("current_user","You're logged in");
 				    
 				     if(u.getUserType().equals("admin")){
                      session.setAttribute("current_user","admin");

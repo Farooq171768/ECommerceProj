@@ -11,14 +11,14 @@
 		</property>
 
 		<property name="connection.url">
-			jdbc:postgresql://localhost:5432/myhiber
+			jdbc:postgresql://localhost:5432/ecommerce
 		</property>
 
 		<property name="connection.username">
 			postgres
 		</property>
 
-		<property name="connection.passsword">
+		<property name="connection.password">
 			farooq14
 		</property>
 
@@ -34,6 +34,9 @@
 			true
 		</property>
 		
+		<mapping class="cgg.ecommerce.entities.Users"/>
+		<mapping class="cgg.ecommerce.entities.Category"/>
+		<mapping class="cgg.ecommerce.entities.Products"/>
 		
 
 

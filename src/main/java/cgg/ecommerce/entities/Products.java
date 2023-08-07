@@ -18,10 +18,10 @@ public class Products {
 	private String productPic;
 	private String productCategory;
 	
-	public Products(int productId, String productName, String productDescription, int productPrice, int productDiscount,
+	public Products( String productName, String productDescription, int productPrice, int productDiscount,
 			int productQuantity, String productCategory,String productPic) {
 		super();
-		this.productId = productId;
+//		this.productId = productId;
 		this.productName = productName;
 		this.productDescription = productDescription;
 		this.productPrice = productPrice;

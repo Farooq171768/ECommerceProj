@@ -1,8 +1,6 @@
 package cgg.ecommerce.servlets;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import cgg.ecommerce.dao.UserDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -28,15 +26,18 @@ public class RegisterServlet extends HttpServlet {
 		 String phno = req.getParameter("user_phonenumber");
 		 String address = req.getParameter("user_address");
 		 
+		 String userType="admin";
+		
+		 
 		 UserDao userDao = new UserDao();
 		 
 		 try {
-				int c=userDao.addUser(name, email, password, phno, address,'normal');
+				int c=userDao.addUser(name, email, password, phno, address,userType);
 				System.out.println(c+" row(s) are inserted");
 			    HttpSession session = req.getSession();
 			    session.setAttribute("message", name+" You have registered successfully");
 			    resp.sendRedirect("login.jsp");
-			  } catch (SQLException e) {
+			  } catch (Exception e) {
 				e.printStackTrace();
 			  }	
 	}

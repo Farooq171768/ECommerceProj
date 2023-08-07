@@ -13,9 +13,9 @@ public class Category {
 	private String categoryName;
 	private String categoryDescription;
 	
-	public Category(int categoryId, String categoryName, String categoryDescription) {
+	public Category( String categoryName, String categoryDescription) {
 		super();
-		this.categoryId = categoryId;
+//		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 		this.categoryDescription = categoryDescription;
 	}

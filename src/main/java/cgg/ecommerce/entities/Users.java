@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class Users {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	 private int userId;
@@ -18,16 +18,16 @@ public class User {
      private String userType;
      
 	
-	public User(int userId, String userName, String userType) {
+	public Users(int userId, String userName, String userType) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.userType = userType;
 	}
-	public User(int userId, String userName, String userEmail, String userPassword, String userph, String useraddress,
+	public Users(String userName, String userEmail, String userPassword, String userph, String useraddress,
 			String userType) {
 		super();
-		this.userId = userId;
+//		this.userId = userId;
 		this.userName = userName;
 		this.userEmail = userEmail;
 		this.userPassword = userPassword;
@@ -35,7 +35,7 @@ public class User {
 		this.useraddress = useraddress;
 		this.userType = userType;
 	}
-	public User() {
+	public Users() {
 		super();
 	}
 	public int getUserId() {
